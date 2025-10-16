@@ -28,9 +28,10 @@ function addItem(img, title, price){
 }
 
 function removeItem(btn){
-    console.log(btn)
     let parent = btn.parentElement.parentElement
+    changeQuant(btn)
     parent.remove()
+    
 }
 
 function calcTotal(){
@@ -41,6 +42,11 @@ function calcTotal(){
     document.getElementById(`final-price`).innerHTML = `$${totalPrice.toFixed(2)}`
 }
 
-function addQuant(){
-
+function changeQuant(input){
+    let row = input.parentElement.parentElement
+    let titleEl = row.querySelector('.cart-item-title')
+    let title = titleEl.innerText
+    entry = priceQuant.get(title)
+    priceQuant.set(title, [entry[0], input.value])
+    calcTotal()
 }
