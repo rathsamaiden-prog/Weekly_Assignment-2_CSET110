@@ -11,6 +11,7 @@ let entry
 function addItem(img, title, price){
     entry = priceQuant.get(title)
     if (entry[1] !== 0){
+        alert(`Item is already in the cart`)
         return
     }
     let template = document.getElementById('cart-product')
@@ -31,7 +32,6 @@ function removeItem(btn){
     let parent = btn.parentElement.parentElement
     changeQuant(btn)
     parent.remove()
-    
 }
 
 function calcTotal(){
@@ -47,6 +47,17 @@ function changeQuant(input){
     let titleEl = row.querySelector('.cart-item-title')
     let title = titleEl.innerText
     entry = priceQuant.get(title)
-    priceQuant.set(title, [entry[0], input.value])
+    if(input.className === `cart-quantity-input`)
+        priceQuant.set(title, [entry[0], input.value])
+    else
+        priceQuant.set(title, [entry[0], 0])
     calcTotal()
+}
+
+function purchase(){
+    if(document.getElementsByClassName(`cart-row`).length === 1)
+        return
+    alert(`Your order has been placed`)
+    let removeBtns = document.querySelectorAll(`.btn-danger`)
+    removeBtns.forEach(removeBtn => removeItem(removeBtn))
 }
