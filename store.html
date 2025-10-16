@@ -32,7 +32,7 @@
                     <img class="shop-item-image" src="Images/Album 2.png">
                     <div class="shop-item-details">
                         <span class="shop-item-price">$14.99</span>
-                        <button class="btn btn-primary shop-item-button"type="button" onclick="addItem(`Images/Album 2.png`, `Album 2`, 14.99)">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button" onclick="addItem(`Images/Album 2.png`, `Album 2`, 14.99)">ADD TO CART</button>
                     </div>
                 </div>
                 <div class="shop-item">
@@ -82,7 +82,7 @@
                 <span class="cart-quantity cart-header cart-column">QUANTITY</span>
             </div>
             <div class="cart-items" id="cart-container">
-                <template id="cart-product">
+                <template class="cart-product" id="cart-product">
                     <div class="cart-row">
                         <div class="cart-item cart-column">
                             <img class="cart-item-image" src="" width="100" height="100"> <!--product image-->
@@ -91,14 +91,14 @@
                         <span class="cart-price cart-column"></span> <!--product price-->
                         <div class="cart-quantity cart-column">
                             <input class="cart-quantity-input" type="number" value="1">
-                            <button class="btn btn-danger" type="button">REMOVE</button>
+                            <button class="btn btn-danger" type="button" onclick="removeItem(this)">REMOVE</button>
                         </div>
                     </div>
                 </template>
             </div>
             <div class="cart-total">
                 <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$0.00</span> <!--total price-->
+                <span class="cart-total-price" id="final-price">$0.00</span> <!--total price-->
             </div>
             <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
         </section>
